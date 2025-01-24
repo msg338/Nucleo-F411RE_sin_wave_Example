@@ -19,6 +19,9 @@ Tera Term 출력
 처음 시작은 모델의 번호 및 모델의 이름이 출력되며, 모델의 입출력 형태를 확인할 수 있습니다. (Reset 버튼을 눌러보세요.)
 계산값과 예측값을 계산해 보니 오차률 2.8%로 나타납니다.
 
+내가 만든 sin_wave examples Project를 zip파일로 첨부했습니다.
+사용하실 경우 IDE에서 미드웨어 패키지 -> X-CUBE-AI 모델 업로드를 다시해주셔야 합니다. / 추가로 sin_wave.tflite 모델도 첨부했습니다.
+
 자료사용 출처:
 https://www.digikey.kr/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
 https://gist.github.com/ShawnHymel/79237fe6aee5a3653c497d879f746c0c
