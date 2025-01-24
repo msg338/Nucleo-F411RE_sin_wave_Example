@@ -10,10 +10,17 @@ STEdgeAI Core v9.0.0 (X-CUBE-AI v9.0.0) / Python version : 3.9.13 / Numpy versio
 y=sin(x) (x:입력, y: 예측)
 x값 입력에 따라 -1~1사이의 y값을 예측할 수 있는 모델을 만들 수 있습니다.
 이 sin_wave model을 사용하여 STM32MX에서 미드웨어 패키지에서 
-X-CUBE-AI를 사용하여 sin_wave.tflite 모델을 불러와서 
-f411re 보드에 On Device할 수 있습니다. (UART2만 사용했습니다.)
+X-CUBE-AI를 사용하여 sin_wave.tflite 모델을 불러와서
+f411re 보드에 On Device할 수 있습니다.
 
+# UART
+![image](https://github.com/user-attachments/assets/acdfe4ae-4665-4f1a-a2bc-a7bf6a74e554)
+
+# Midware Package
 ![image](https://github.com/user-attachments/assets/16bbdcf0-3b95-46ab-8201-f115b48989ad)
+
+# CLK
+![image](https://github.com/user-attachments/assets/de90ef0f-2e48-4dd7-99e1-dd4cc93d5606)
 
 # Tera Term 출력
 
