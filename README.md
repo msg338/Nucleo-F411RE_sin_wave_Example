@@ -10,6 +10,9 @@ x값 입력에 따라 -1~1사이의 y값을 예측할 수 있는 모델을 만�
 X-CUBE-AI를 사용하여 sin_wave.tflite 모델을 불러와서 
 f411re 보드에 On Device할 수 있습니다.
 
+![image](https://github.com/user-attachments/assets/16bbdcf0-3b95-46ab-8201-f115b48989ad)
+
+
 
 자료사용 출처:
 https://www.digikey.kr/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
