@@ -8,11 +8,13 @@ y=sin(x) (x:입력, y: 예측)
 x값 입력에 따라 -1~1사이의 y값을 예측할 수 있는 모델을 만들 수 있습니다.
 이 sin_wave model을 사용하여 STM32MX에서 미드웨어 패키지에서 
 X-CUBE-AI를 사용하여 sin_wave.tflite 모델을 불러와서 
-f411re 보드에 On Device할 수 있습니다.
+f411re 보드에 On Device할 수 있습니다. (UART2만 사용했습니다.)
 
 ![image](https://github.com/user-attachments/assets/16bbdcf0-3b95-46ab-8201-f115b48989ad)
 
+Tera Term 출력
 
+계산값과 예측값을 계산해 보니 오차률 2.8%로 나타납니다.
 
 자료사용 출처:
 https://www.digikey.kr/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
