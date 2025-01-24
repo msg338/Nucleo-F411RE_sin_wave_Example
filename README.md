@@ -13,6 +13,7 @@ f411re 보드에 On Device할 수 있습니다. (UART2만 사용했습니다.)
 ![image](https://github.com/user-attachments/assets/16bbdcf0-3b95-46ab-8201-f115b48989ad)
 
 Tera Term 출력
+
 ![image](https://github.com/user-attachments/assets/54b6ef14-4aa1-459e-9045-23626f9ab24b)
 처음 시작은 모델의 번호 및 모델의 이름이 출력되며, 모델의 입출력 형태를 확인할 수 있습니다. (Reset 버튼을 눌러보세요.)
 계산값과 예측값을 계산해 보니 오차률 2.8%로 나타납니다.
