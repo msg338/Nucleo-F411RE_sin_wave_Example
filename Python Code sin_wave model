@@ -1,0 +1,106 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+from tensorflow.keras import layers
+import os  # 추가: 바탕화면 경로를 얻기 위해 사용
+
+# 버전 출력
+print('Numpy ' + np.__version__)
+print('TensorFlow ' + tf.__version__)
+print('Keras ' + tf.keras.__version__)
+
+# 데이터셋 생성 관련 변수 설정
+nsamples = 1000  # 샘플 개수
+val_ratio = 0.2  # 검증 데이터 비율
+test_ratio = 0.2  # 테스트 데이터 비율
+tflite_model_name = 'sine_model'  # 저장될 TFLite 모델 이름
+
+# 데이터 생성
+np.random.seed(1234)
+x_values = np.random.uniform(low=0, high=(2 * math.pi), size=nsamples)  # 0~2π 사이의 값 생성
+y_values = np.sin(x_values) + (0.1 * np.random.randn(x_values.shape[0]))  # sin(x)에 노이즈 추가
+
+# 데이터를 학습, 검증, 테스트 셋으로 분할
+val_split = int(val_ratio * nsamples)  # 검증 데이터 크기
+test_split = int(val_split + (test_ratio * nsamples))  # 테스트 데이터 크기
+x_val, x_test, x_train = np.split(x_values, [val_split, test_split])  # x 데이터 분할
+y_val, y_test, y_train = np.split(y_values, [val_split, test_split])  # y 데이터 분할
+
+# 데이터셋 크기가 올바른지 확인
+assert(x_train.size + x_val.size + x_test.size) == nsamples
+
+# 모델 입력에 맞게 데이터 리쉐이프
+x_train = x_train.reshape(-1, 1)
+x_val = x_val.reshape(-1, 1)
+x_test = x_test.reshape(-1, 1)
+
+# 데이터 시각화 (파란색: 학습, 빨간색: 테스트, 노란색: 검증)
+plt.plot(x_train, y_train, 'b.', label="Train")
+plt.plot(x_test, y_test, 'r.', label="Test")
+plt.plot(x_val, y_val, 'y.', label="Validate")
+plt.legend()
+plt.show()
+
+# 모델 빌드
+model = tf.keras.Sequential()
+model.add(layers.Dense(16, activation='relu', input_shape=(1,)))  # 첫 번째 Dense 레이어
+model.add(layers.Dense(16, activation='relu'))  # 두 번째 Dense 레이어
+model.add(layers.Dense(1))  # 출력 레이어
+
+# 모델 구조 출력
+model.summary()
+
+# 모델 컴파일 (최적화기, 손실 함수, 평가지표 설정)
+model.compile(optimizer='rmsprop', loss='mae', metrics=['mae'])
+
+# 모델 학습
+history = model.fit(x_train,
+                    y_train,
+                    epochs=500,  # 학습 반복 횟수
+                    batch_size=100,  # 배치 크기
+                    validation_data=(x_val, y_val))  # 검증 데이터
+
+# 학습 손실 및 검증 손실 시각화
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(loss) + 1)
+
+plt.plot(epochs, loss, 'bo', label='Training loss')  # 학습 손실
+plt.plot(epochs, val_loss, 'b', label='Validation loss')  # 검증 손실
+plt.title('Training and validation loss')
+plt.legend()
+plt.show()
+
+# 테스트 데이터에 대한 예측
+predictions = model.predict(x_test)
+
+# 시각화를 위해 x_test를 정렬
+sorted_indices = np.argsort(x_test[:, 0])
+x_test_sorted = x_test[sorted_indices]
+y_test_sorted = y_test[sorted_indices]
+predictions_sorted = predictions[sorted_indices]
+
+# 실제 값과 예측값 비교
+plt.clf()
+plt.title("Comparison of predictions to actual values")
+plt.plot(x_test_sorted, y_test_sorted, 'b.', label='Actual')  # 실제 값
+plt.plot(x_test_sorted, predictions_sorted, 'r.', label='Prediction')  # 예측 값
+plt.legend()
+plt.show()
+
+# Keras 모델을 TFLite 모델로 변환
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]  # 크기 최적화
+tflite_model = converter.convert()
+
+# 바탕화면 경로 가져오기
+desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+
+# TFLite 모델을 바탕화면에 저장
+tflite_model_path = os.path.join(desktop_path, tflite_model_name + '.tflite')
+with open(tflite_model_path, 'wb') as f:
+    f.write(tflite_model)
+
+print(f"TFLite 모델이 바탕화면에 저장되었습니다: {tflite_model_path}")
