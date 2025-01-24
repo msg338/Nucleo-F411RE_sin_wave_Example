@@ -1,4 +1,7 @@
+# VERSION
 STEdgeAI Core v9.0.0 (X-CUBE-AI v9.0.0) / Python version : 3.9.13 / Numpy version : 1.23.0 / TF version : 2.12.0 / ONNX version : 1.10.2 / ONNX RT version : 1.15.0
+
+# Example
 
 ![image](https://github.com/user-attachments/assets/fbb78414-2fef-4118-ba61-dfec28a1d03c)
 ![image](https://github.com/user-attachments/assets/146f80df-4a3b-4a93-9427-03e20b37c1a0)
@@ -12,7 +15,7 @@ f411re 보드에 On Device할 수 있습니다. (UART2만 사용했습니다.)
 
 ![image](https://github.com/user-attachments/assets/16bbdcf0-3b95-46ab-8201-f115b48989ad)
 
-Tera Term 출력
+# Tera Term 출력
 
 ![image](https://github.com/user-attachments/assets/54b6ef14-4aa1-459e-9045-23626f9ab24b)
 
@@ -22,6 +25,6 @@ Tera Term 출력
 내가 만든 sin_wave examples Project를 zip파일로 첨부했습니다.
 사용하실 경우 IDE에서 미드웨어 패키지 -> X-CUBE-AI 모델 업로드를 다시해주셔야 합니다. / 추가로 sin_wave.tflite 모델도 첨부했습니다.
 
-자료사용 출처:
+# 자료사용 출처:
 https://www.digikey.kr/en/maker/projects/tinyml-getting-started-with-stm32-x-cube-ai/f94e1c8bfc1e4b6291d0f672d780d2c0
 https://gist.github.com/ShawnHymel/79237fe6aee5a3653c497d879f746c0c
