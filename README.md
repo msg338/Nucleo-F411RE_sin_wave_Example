@@ -1,4 +1,5 @@
 STEdgeAI Core v9.0.0 (X-CUBE-AI v9.0.0) / Python version : 3.9.13 / Numpy version : 1.23.0 / TF version : 2.12.0 / ONNX version : 1.10.2 / ONNX RT version : 1.15.0
+![image](https://github.com/user-attachments/assets/fbb78414-2fef-4118-ba61-dfec28a1d03c)
 
 파이썬을 통해 3개의 Dense Layer 층를 사용하여 sin_wave model
 y=sin(x) (x:입력, y: 예측)
